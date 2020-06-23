@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#main {
+    width: 600px;
+    margin: 50px;
+}
+
+#todoInput {
+    width: 100%;
+    min-height: 40px;
+    font-family: arial, sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    color: rgb(38,38,38);
+    border: none;
+    background: none;
+    margin-left: 10px;
+}
+
+#newTodo {
+    min-height: 40px;
+    background-color: rgb(225,225,225);
+}
+
+.todo {
+    width: 100%;
+    min-height: 40px;
+}
+
+
+.status {
+    display: inline-block;
+    margin: 10px;
+}
+
+.status:hover {
+    cursor: pointer;
+}
+
+.todo p {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    font-family: arial, sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    color: rgb(68,68,68);
+    text-decoration: none;
+    user-select: none;
+}
+
+.deleteSelected {
+    visibility: hidden;
+    float: right;
+    padding: 2px;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(164, 164, 164);
+    text-decoration: none;
+    user-select: none;
+    background: none;
+    border: none;
+    margin: 5px 15px;
+}
+
+.deleteSelected:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.todoOptions {
+    border: 1px solid rgb(234, 234, 234);
+}
+
+.filters{
+    list-style-type: none;
+    display: inline-block;
+    margin: 5px;
+}
+
+li:hover {
+    border: 1px solid rgb(234, 234, 234);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+li {
+    display: inline-block;
+    padding: 2px;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(164, 164, 164);
+    text-decoration: none;
+    user-select: none;
+}
+
+.selected {
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 5px;
+}

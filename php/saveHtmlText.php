@@ -1,6 +1,5 @@
 <?php
 function main(){
-    include ('showErrorMsg.php');
     include ('PdoConnection.php');
     $mainConnect = new PdoConnection();
     $mainConnect->connectToMysql();
@@ -10,20 +9,17 @@ function main(){
 
     if ($connectedUser->authorisation($mainConnect->pdoObj, $_COOKIE['id'], $_COOKIE['hash'])){
         if ($connectedUser->isValid($mainConnect->pdoObj, $_COOKIE['id'])){
-            include 'notesForm.php';
+            $html_text = file_get_contents('php://input');
+            $html_text = '<div id="main">' . $html_text . '</div>';
+            $connectedUser->saveHtmlText($mainConnect->pdoObj, $_COOKIE['id'], $html_text);
+            echo 'Changes saved successfully';
         } else {
-            showErrorMsg('Validation link was send to your e-mail. Please, follow the instructions in the letter.');
+            echo 'Validation link was send to your e-mail. Please, follow the instructions in the letter.';
         }
     } else {
-        showErrorMsg($connectedUser->getErrorMsg());
+        echo $connectedUser->getErrorMsg();
     }
 }
 
-function generateHtmlPage($title){
-    include ('header.php');
-    main();
-    include ('footer.php');
-}
+main();
 
-generateHtmlPage('Notes');
-?>

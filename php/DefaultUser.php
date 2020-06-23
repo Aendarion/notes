@@ -207,4 +207,28 @@ class DefaultUser {
         }
         return true;
     }
+
+    public function getHtmlText($linkToMysql, $userId){
+        function getHtmlTextMysql($link, $id){
+            $stmt = $link->prepare('SELECT html_text FROM users WHERE id = ?');
+            $stmt->execute(array($id));
+            $result = $stmt->fetchColumn();
+
+            if (!isset($result) or !$result) {
+                return false;
+            }
+            return $result;
+        }
+        $result = getHtmlTextMysql($linkToMysql, $userId);
+        if ($result) {
+            return $result;
+        }
+        $this->errorMsg = 'No data saved';
+        return false;
+    }
+
+    public function saveHtmlText($linkToMysql, $userId, $htmlText){
+            $stmt = $linkToMysql->prepare('UPDATE users SET html_text=? WHERE id=?');
+            $stmt->execute(array($htmlText, $userId));
+    }
 }
